@@ -41,3 +41,48 @@ const moveBlock = () => {
   requestAnimationFrame(moveBlock);
 };
 moveBlock();
+
+// Lesson 3
+const content = document.querySelector(".content");
+content.onclick = (event) => {
+  if (event.target.tagName.toLowerCase() === "button") {
+    if (event.target.classList.contains("red")) {
+      event.target.classList.remove("red");
+    } else {
+      event.target.classList.add("red");
+    }
+  }
+};
+const newButton = document.createElement("button");
+content.append(newButton);
+
+// tab slider
+const tabContentBlocks = document.querySelectorAll(".tab-slider-block");
+const tabs = document.querySelectorAll(".tab-slider-item");
+const tabParent = document.querySelector(".tab-slider-items");
+
+const hideTabContent = () => {
+  tabContentBlocks.forEach((item) => {
+    item.style.display = "none";
+  });
+  tabs.forEach((item) => {
+    item.classList.remove("tab-slider-item__active");
+  });
+};
+const showTabContent = (index = 0) => {
+  tabContentBlocks[index].style.display = "block";
+  tabs[index].classList.add("tab-slider-item__active");
+};
+hideTabContent();
+showTabContent();
+
+tabParent.onclick = (event) => {
+  if (event.target.classList.contains("tab-slider-item")) {
+    tabs.forEach((item, index) => {
+      if (event.target === item) {
+        hideTabContent();
+        showTabContent(index);
+      }
+    });
+  }
+};
