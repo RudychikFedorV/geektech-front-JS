@@ -15,7 +15,6 @@ btn.addEventListener("click", () => {
 });
 
 // Lesson 2
-
 const parentBlock = document.querySelector(".parent-block");
 const childBlock = document.querySelector(".child-block");
 
@@ -41,5 +40,4 @@ const moveBlock = () => {
   }
   requestAnimationFrame(moveBlock);
 };
-
 moveBlock();
