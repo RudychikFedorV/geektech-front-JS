@@ -86,3 +86,45 @@ tabParent.onclick = (event) => {
     });
   }
 };
+
+// Lesson 4
+// CRUD - POST, GET, PATCH, DELETE - методы запросов
+const btn4 = document.querySelector(".btn");
+
+btn4.onclick = () => {
+  const request = new XMLHttpRequest();
+  request.open("GET", "json/data.json");
+  request.setRequestHeader("Content-type", "application/json");
+  request.send();
+
+  request.onload = () => {
+    const data = JSON.parse(request.response);
+    document.querySelector(".name").innerHTML = data.name;
+    document.querySelector(".age").innerHTML = data.age;
+  };
+};
+
+// slider
+const slider = document.querySelector("#slider");
+const sliderWrapper = slider.querySelector(".slider-wrapper");
+let slide = 1;
+let slideMax = document.querySelectorAll('.slider-slide').length;
+let sliderWidth = 1000;
+let sliderHeight = 600;
+
+const slideGo = (needSlide) => {
+  slide = needSlide;
+  sliderWrapper.style.left = (slide - 1) * sliderWidth * -1 + "px";
+};
+
+slider.querySelector(".slider-prev").onclick = () => {
+  if (slide != 1) {
+    slideGo(slide - 1);
+  }
+};
+slider.querySelector(".slider-next").onclick = () => {
+  if (slide != slideMax) {
+    slideGo(slide + 1);
+  }
+};
+// Lesson 5
